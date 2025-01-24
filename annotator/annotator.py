@@ -9,23 +9,17 @@ import Levenshtein
 
 measurements = [
         ("Grammaticality",
-            ["Other",
-             "Incomprehensible",
-             "Somewhat comprehensible",
-             "Comprehensible",
-             "Perfect"]),
+            ["Several errors",
+             "Only one or very few errors",
+             "Fully acceptable"]),
         ("Fluency",
-            ["Other",
-             "Extremely unnatural",
-             "Somewhat unnatural",
-             "Somewhat natural",
-             "Extremely natural"]),
+            ["Several disfluencies",
+             "Moslty fluent",
+             "Fully fluent"]),
         ("Meaning Preservation",
-            ["Other",
-             "Substantially different",
-             "Moderate differences",
-             "Minor differences",
-             "Identical"])]
+            ["The overall meaning changes singnificantly",
+             "There are some small changes in meaning",
+             "The meaning is fully preserved"])]
 
 
 tf_config = {"height": 0.1,
@@ -159,7 +153,7 @@ class Annotator:
 
         separator = ttk.Separator(window, orient='horizontal')
         separator.pack(fill=tk.X)
-        lb = tk.Label(window, text=f'Intended meaning', **lb_config)
+        lb = tk.Label(window, text=f'Minimal gold reference', **lb_config)
         lb.pack()
         tf_ref = tk.Text(window, bg='black', fg='white', **tf_config)
         tf_ref.config(state=tk.DISABLED)
