@@ -132,7 +132,7 @@ class Annotator:
             separator.pack(fill=tk.X)
             lb = tk.Label(window, text=f'System {i+1} output', **lb_config)
             lb.pack()
-            tf_fixed = tk.Text(window, bg='lightgray', **tf_config)
+            tf_fixed = tk.Text(window, bg='gray', **tf_config)
             tf_edit = tk.Text(window, **tf_config)
             tf_fixed.insert('1.0', system['output'])
             tf_fixed.config(state=tk.DISABLED)
