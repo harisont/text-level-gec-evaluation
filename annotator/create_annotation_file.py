@@ -7,11 +7,11 @@ from multigec_2025_utils import split_to_dict, md_to_dict
 split = "test"
 subcorpus_path = "/home/harisont/Repos/spraakbanken/multigec-2025-data-providers/data/swedish/SweLL_gold"
 system_out_path = "/home/harisont/Repos/spraakbanken/multigec-2025-data-providers/final_submissions/UAM-CSI/sv-swell_gold-fluency-hypo-{}.md"
-out_path = "annotations/test.json"
+out_path = "annotations/sv-test.json"
 
 team = os.path.normpath(system_out_path).split(os.path.sep)[-2]
 
-subcorpus_dict = split_to_dict(subcorpus_path, split)
+subcorpus_dict = split_to_dict(subcorpus_path, split, newline_replacement="␤")
 
 with open(system_out_path.format(split)) as system_out_file:
     system_out = system_out_file.read()
@@ -21,7 +21,7 @@ data = []
 for essay_id in subcorpus_dict:
     system_info = {}
     system_info[team] = dict(
-        output=system_out_dict[essay_id],
+        output=system_out_dict[essay_id].replace("\n", "␤"),
         annotators={})
     data.append(dict(
         original=subcorpus_dict[essay_id]["orig"],
